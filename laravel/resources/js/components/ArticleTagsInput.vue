@@ -23,29 +23,16 @@ export default {
         initialTags: {
             type: Array,
             default: []
+        },
+        autocompleteItems: {
+            type: Array,
+            default: []
         }
     },
     data() {
         return {
             tag: "",
-            tags: this.initialTags,
-            autocompleteItems: [
-                {
-                    text: "Spain"
-                },
-                {
-                    text: "France"
-                },
-                {
-                    text: "USA"
-                },
-                {
-                    text: "Germany"
-                },
-                {
-                    text: "China"
-                }
-            ]
+            tags: this.initialTags
         };
     },
     computed: {
