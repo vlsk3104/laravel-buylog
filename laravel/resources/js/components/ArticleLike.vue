@@ -6,7 +6,8 @@
                 :class="{ 'red-text': this.isLikedBy }"
             />
         </button>
-        10
+        {{ countLikes }}
+        <!-- この行を変更 -->
     </div>
 </template>
 
@@ -16,11 +17,18 @@ export default {
         initialIsLikedBy: {
             type: Boolean,
             default: false
+        },
+
+        initialCountLikes: {
+            type: Number,
+            default: 0
         }
     },
     data() {
         return {
-            isLikedBy: this.initialIsLikedBy
+            isLikedBy: this.initialIsLikedBy,
+
+            countLikes: this.initialCountLikes
         };
     }
 };
