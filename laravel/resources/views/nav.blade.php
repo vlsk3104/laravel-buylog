@@ -16,16 +16,14 @@
     </li>
     @endguest
 
-    <!--検索ボタン
-    @auth
-    <div class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" v-model="search_term" aria-label="Search" />
+    <!--検索ボタン @auth <div class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="検索" v-model="search_term" aria-label="Search" />
       <button class="btn btn-outline-success my-2 my-sm-0" v-on:click.prevent="getArticles()">
-        Search
+        検索
       </button>
-    </div>
-    @endauth
-    -->
+      </div>
+      @endauth
+      -->
 
     @auth
     <li class="nav-item">
