@@ -16,11 +16,23 @@
     </li>
     @endguest
 
+    <!--検索ボタン
+    @auth
+    <div class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" v-model="search_term" aria-label="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" v-on:click.prevent="getArticles()">
+        Search
+      </button>
+    </div>
+    @endauth
+    -->
+
     @auth
     <li class="nav-item">
       <a class="nav-link" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
     </li>
     @endauth
+
 
 
     @auth
@@ -30,7 +42,7 @@
         <i class="fas fa-user-circle"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-        <button class="dropdown-item" type="button" onclick="location.href=''">
+        <button class="dropdown-item" type="button" onclick="location.href='{{ route("users.show", ["name" => Auth::user()->name]) }}'">
           マイページ
         </button>
         <div class="dropdown-divider"></div>
