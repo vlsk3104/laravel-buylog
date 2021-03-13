@@ -10,6 +10,7 @@ use App\Http\Requests\ArticleRequest;
 
 use Illuminate\Http\Request;
 
+
 class ArticleController extends Controller
 {
     public function __construct()
@@ -22,6 +23,7 @@ class ArticleController extends Controller
         $articles = Article::all()->sortByDesc('created_at');
         return view('articles.index', ['articles' => $articles]);
     }
+
     public function create()
     {
         $allTagNames = Tag::all()->map(function ($tag) {
@@ -32,6 +34,7 @@ class ArticleController extends Controller
             'allTagNames' => $allTagNames,
         ]);
     }
+
     public function store(ArticleRequest $request, Article $article)
     {
         $article->fill($request->all());
@@ -45,6 +48,7 @@ class ArticleController extends Controller
 
         return redirect()->route('articles.index');
     }
+
     public function edit(Article $article)
     {
         $tagNames = $article->tags->map(function ($tag) {
@@ -59,6 +63,7 @@ class ArticleController extends Controller
             'allTagNames' => $allTagNames,
         ]);
     }
+
     public function update(ArticleRequest $request, Article $article)
     {
         $article->fill($request->all())->save();
@@ -69,15 +74,25 @@ class ArticleController extends Controller
         });
         return redirect()->route('articles.index');
     }
+
     public function destroy(Article $article)
     {
         $article->delete();
         return redirect()->route('articles.index');
     }
+
     public function show(Article $article)
     {
         return view('articles.show', ['article' => $article]);
     }
+
+    public function searchTag(Request $request)
+    {
+        $search = $request->search;
+        $tags = Tag::where('name', 'like', "$search%")->get();
+        return view('tags.search', compact('tags', 'search'));
+    }
+
     public function like(Request $request, Article $article)
     {
         $article->likes()->detach($request->user()->id);
