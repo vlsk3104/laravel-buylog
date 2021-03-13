@@ -7,9 +7,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python3 \
   unzip \
   && docker-php-ext-install \
-    pdo_pgsql \
-    sockets \
-    zip \
+  pdo_pgsql \
+  sockets \
+  zip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
