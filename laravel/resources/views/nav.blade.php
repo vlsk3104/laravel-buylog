@@ -16,14 +16,16 @@
     </li>
     @endguest
 
-    <!--検索ボタン @auth <div class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="検索" v-model="search_term" aria-label="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" v-on:click.prevent="getArticles()">
-        検索
-      </button>
+    @auth
+    <form action="/search" method="get" class="form-inline my-2 my-lg-0 ml-2">
+      <div class="form-group">
+        <input type="search" class="form-control mr-sm-2" name="search" required class="form-control input-search my-0 py-1 red-border" placeholder="タグ名を入力" aria-label="検索...">
       </div>
-      @endauth
-      -->
+      <input type="submit" value="検索" class="btn btn-info">
+    </form>
+
+    @endauth
+
 
     @auth
     <li class="nav-item">
